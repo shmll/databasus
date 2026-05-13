@@ -6,7 +6,7 @@ This is NOT a strict set of rules — it is a set of recommendations to help wri
 Per-folder rules live next to the code they govern:
 
 - [`backend/CLAUDE.md`](backend/CLAUDE.md) — Go + Gin + GORM + PostgreSQL backend (controllers, migrations, CRUD, DI, testing, logging)
-- [`agent/CLAUDE.md`](agent/CLAUDE.md) — Go agent CLI (no HTTP server, no schema; shares Go conventions with the backend)
+- [`agent/backup/CLAUDE.md`](agent/backup/CLAUDE.md) — Go agent CLI (no HTTP server, no schema; shares Go conventions with the backend)
 - [`frontend/CLAUDE.md`](frontend/CLAUDE.md) — React 19 + TypeScript + Vite + Ant Design + Tailwind
 
 This root file holds the engineering philosophy that applies everywhere.

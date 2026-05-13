@@ -106,11 +106,11 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version: "1.26.2"
-          cache-dependency-path: agent/go.sum
+          cache-dependency-path: agent/backup/go.sum
 
       - name: Download Go modules
         run: |
-          cd agent
+          cd agent/backup
           go mod download
 
       - name: Install golangci-lint
@@ -120,12 +120,12 @@ jobs:
 
       - name: Run golangci-lint
         run: |
-          cd agent
+          cd agent/backup
           golangci-lint run
 
       - name: Verify go mod tidy
         run: |
-          cd agent
+          cd agent/backup
           go mod tidy
           git diff --exit-code go.mod go.sum || (echo "go mod tidy made changes, please run 'go mod tidy' and commit the changes" && exit 1)
 
@@ -171,16 +171,16 @@ jobs:
         uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5.6.0
         with:
           go-version: "1.26.2"
-          cache-dependency-path: agent/go.sum
+          cache-dependency-path: agent/backup/go.sum
 
       - name: Download Go modules
         run: |
-          cd agent
+          cd agent/backup
           go mod download
 
       - name: Run Go tests
         run: |
-          cd agent
+          cd agent/backup
           go test -count=1 -failfast ./internal/...
 
   e2e-agent:
@@ -193,13 +193,13 @@ jobs:
 
       - name: Run e2e tests
         run: |
-          cd agent
+          cd agent/backup
           make e2e
 
       - name: Cleanup
         if: always()
         run: |
-          cd agent/e2e
+          cd agent/backup/e2e
           docker compose down -v --rmi local || true
           rm -rf artifacts || true
 
@@ -217,13 +217,13 @@ jobs:
 
       - name: Run backup-restore e2e (PG ${{ matrix.pg_version }})
         run: |
-          cd agent
+          cd agent/backup
           make e2e-backup-restore PG_VERSION=${{ matrix.pg_version }}
 
       - name: Cleanup
         if: always()
         run: |
-          cd agent/e2e
+          cd agent/backup/e2e
           docker compose -f docker-compose.backup-restore.yml down -v --rmi local || true
           rm -rf artifacts || true
 

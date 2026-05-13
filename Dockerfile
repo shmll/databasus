@@ -87,10 +87,10 @@ ARG APP_VERSION=dev
 
 WORKDIR /agent
 
-COPY agent/go.mod ./
+COPY agent/backup/go.mod ./
 RUN go mod download
 
-COPY agent/ ./
+COPY agent/backup/ ./
 
 # Build for x86_64 (amd64) — static binary, no glibc dependency
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 \
