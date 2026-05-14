@@ -25,15 +25,6 @@ export function AuthNavbarComponent() {
       </div>
 
       <div className="mr-3 ml-auto hidden items-center gap-5 sm:flex">
-        <a
-          className="!text-black hover:opacity-80 dark:!text-gray-200"
-          href="https://t.me/databasus_community"
-          target="_blank"
-          rel="noreferrer"
-        >
-          Community
-        </a>
-
         {!IS_CLOUD && (
           <Tooltip title="99.9% uptime, 2x backup copies">
             <a
@@ -50,6 +41,35 @@ export function AuthNavbarComponent() {
             </a>
           </Tooltip>
         )}
+
+        {!IS_CLOUD && (
+          <a
+            className="!text-black hover:opacity-80 dark:!text-gray-200"
+            href="https://databasus.com/labs"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Labs
+          </a>
+        )}
+
+        <a
+          className="!text-black hover:opacity-80 dark:!text-gray-200"
+          href="https://databasus.com/installation"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Docs
+        </a>
+
+        <a
+          className="!text-black hover:opacity-80 dark:!text-gray-200"
+          href="https://t.me/databasus_community"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Community
+        </a>
 
         <div className="flex items-center gap-2">
           <StarButtonComponent />
